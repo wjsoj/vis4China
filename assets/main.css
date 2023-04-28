@@ -256,3 +256,28 @@ footer a {
     width: 80vw;
     margin-top: 20px;
 }
+
+.download {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 60 80px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.btn {
+    background-color: rgb(49,160,160);
+    color: white;
+    font-weight: 400;
+    border-radius: 10px;
+    width:60%;
+    align-self: center;
+    margin: 0 60px;
+}
