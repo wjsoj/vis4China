@@ -259,10 +259,10 @@ footer a {
 
 .download {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
-    padding: 60 80px;
+    padding: 40 60px;
 }
 
 .btn-container {

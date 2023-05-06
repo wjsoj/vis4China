@@ -81,6 +81,7 @@
       <p class="aboutText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <div class="download">
         <div class="btn-container"><button class="mdui-btn mdui-btn-raised mdui-ripple btn" onclick="download(1)">下载数据（.json）</button></div>
+        <div class="btn-container"><button class="mdui-btn mdui-btn-raised mdui-ripple btn" onclick="download(4)">在线查看数据</button></div>
         <div class="btn-container"><button class="mdui-btn mdui-btn-raised mdui-ripple btn" onclick="download(2)">下载数据分析报告</button></div>
         <div class="btn-container"><button class="mdui-btn mdui-btn-raised mdui-ripple btn" onclick="download(3)">下载最终报告</button></div>
       </div>
@@ -116,6 +117,8 @@
         window.open("https://raw.githubusercontent.com/wjsoj/vis4China/main/file/数据收集与预处理.pdf");
       } else if (id == 3) {
         window.open("https://raw.githubusercontent.com/ChenYCL/Visualize-China/main/assets/data/report.pdf");
+      } else if (id == 4) {
+        window.open("https://wjsoj-vis4china-pythonmain-dbz309.streamlit.app/");
       }
     }
   </script>
