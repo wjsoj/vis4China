@@ -150,7 +150,7 @@ nav a:hover {
 .logoText {
     font-size: 1.5rem;
     font-weight: 600;
-    color: rgb(49, 160, 160);
+    color: rgb(44, 40, 40);
 }
 
 #links {
@@ -160,9 +160,11 @@ nav a:hover {
 
 .charts {
     width: 100%;
-    min-height: 60vh;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .chart {
@@ -173,6 +175,11 @@ nav a:hover {
 .chartText {
     /* margin: 60 80px; */
     margin-top: 120px;
+}
+
+/* 动画进入 */
+.chartTextActive {
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .chartTitle {
@@ -191,15 +198,15 @@ nav a:hover {
 }
 
 #area1 {
-    background-color: rgba(240, 255, 255, 0.8);
+    /* background-color: rgba(240, 255, 255, 0.8); */
 }
 
 #area2 {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
 
 #area3 {
-    background-color: floralwhite;
+    /* background-color: floralwhite; */
 }
 
 #about {
@@ -280,4 +287,8 @@ footer a {
     width:60%;
     align-self: center;
     margin: 0 60px;
+}
+
+.btn:hover {
+    background-color: rgb(49, 160, 160, 0.8);
 }
