@@ -23,7 +23,7 @@
             scrolly = Math.max(0, _w.pageYOffset || _d.scrollTop || _b.scrollTop || 0) - (_d.clientTop || 0);
         return {
             width: width,
-            height: height*4,
+            height: height*5,
             ratio: width / height,
             centerx: width / 2,
             centery: height / 2,
