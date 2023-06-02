@@ -1,5 +1,14 @@
 var vis = {};
 
+var selector1 = document.querySelector('#selector');
+var inst = new mdui.Select(selector,{"gutter": 24});
+
+selector1.addEventListener('change', function() {
+  // 当选择发生变化时执行的操作
+  var selectedOption = selector1.value;
+  resetYData(parseInt(selectedOption));
+});
+
 window.addEventListener('scroll', function() {
   var header = document.getElementsByTagName('header')[0];
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -91,16 +100,14 @@ window.addEventListener('scroll', function() {
   }
 });
 
-
 async function activiteChart1(){
   var chartDom2 = document.getElementById("chart1");
   var myChart2 = echarts.init(chartDom2);
   var option2;
-  
   // prettier-ignore
-  let dataAxis = ['晋', '豫', '浙', '冀', '川', '陕', '苏', '湘', '鲁', '赣', '闽', '皖', '鄂', '滇', '甘', '辽', '蒙', '京', '新', '粤', '吉', '桂', '黔', '藏', '黑', '渝', '青', '沪', '琼', '宁', '津'];
+  let dataAxis = ['晋', '豫', '冀', '浙', '川', '陕', '苏', '湘', '鲁', '赣', '闽', '皖', '鄂', '滇', '甘', '辽', '蒙', '京', '新', '粤', '吉', '桂', '黔', '藏', '黑', '渝', '青', '沪', '琼', '宁', '津'];
   // prettier-ignore
-  let data = [537, 428, 300, 296, 289, 282, 261, 234, 230, 190, 179, 178, 177, 170, 160, 154, 151, 141, 140, 134, 97, 84, 81, 71, 70, 62, 51, 42, 37, 36, 32];
+  let data = [539, 430, 304, 300, 289, 283, 261, 234, 230, 190, 179, 178, 177, 170, 161, 154, 148, 140, 136, 133, 97, 84, 81, 71, 70, 62, 51, 42, 37, 36, 27];
   let yMax = 500;
   let dataShadow = [];
   for (let i = 0; i < data.length; i++) {
@@ -143,6 +150,7 @@ async function activiteChart1(){
     ],
     animationDuration: 2000,
     animationDelay: 500,
+    animationDurationUpdate: 1000,
     series: [
       {
         type: 'bar',
@@ -378,4 +386,36 @@ async function activiteChart3(){
   };
   
   option3 && myChart3.setOption(option3);
+}
+
+function resetYData(num) {
+  var chartDom2 = document.getElementById("chart1");
+  var myChart2 = echarts.init(chartDom2);
+  if(num == 1){
+    var newaxis = ['晋', '豫', '浙', '冀', '川', '渝', '陕', '赣', '闽', '鄂', '苏', '蒙', '鲁', '湘', '新', '滇', '皖', '黔', '桂', '甘', '辽', '吉', '青', '宁', '京', '黑', '琼', '津', '粤', '沪', '藏'];
+    var newdata = [421, 158, 150, 142, 141, 105, 99, 92, 88, 81, 80, 77, 67, 54, 54, 53, 47, 44, 39, 36, 33, 25, 22, 14, 13, 10, 10, 6, 5, 5, 3];
+  }else if(num == 2){
+    var newaxis = ['陕', '豫', '甘', '京', '冀', '川', '湘', '辽', '晋', '渝', '苏', '皖', '浙', '闽', '滇', '粤', '鲁', '桂', '鄂', '赣', '蒙', '黔', '新', '青', '宁', '吉', '黑', '琼', '藏', '沪', '津'];
+    var newdata = [43, 35, 32, 29, 28, 24, 24, 23, 20, 20, 17, 16, 15, 15, 12, 12, 11, 11, 10, 7, 6, 5, 4, 4, 3, 2, 2, 2, 1, 1, 0];
+  }else if(num == 3){
+    var newaxis = ['豫', '湘', '陕', '冀', '辽', '京', '苏', '皖', '浙', '滇', '粤', '晋', '渝', '甘', '藏', '闽', '鲁', '川', '赣', '鄂', '吉', '新', '宁', '青', '琼', '蒙', '桂', '黔', '黑', '沪', '津'];
+    var newdata = [157, 90, 87, 71, 71, 61, 52, 52, 50, 50, 49, 47, 46, 40, 37, 33, 32, 27, 24, 21, 19, 15, 15, 14, 11, 9, 8, 7, 7, 6, 1];
+  }else if(num == 4){
+    var newaxis = ['苏', '渝', '新', '皖', '浙', '鲁', '蒙', '川', '鄂', '甘', '湘', '冀', '豫', '赣', '黑', '闽', '吉', '晋', '陕', '沪', '藏', '粤', '桂', '津', '京', '滇', '辽', '琼', '青', '黔', '宁'];
+    var newdata = [72, 64, 53, 52, 49, 46, 44, 40, 40, 40, 39, 37, 36, 35, 33, 32, 31, 29, 28, 27, 25, 24, 21, 19, 18, 14, 12, 10, 8, 7, 1];
+  }else if(num == 5){
+    var newaxis = ['川', '豫', '浙', '鲁', '滇', '冀', '陕', '渝', '湘', '晋', '赣', '京', '鄂', '苏', '闽', '皖', '黑', '辽', '黔', '新', '粤', '吉', '甘', '藏', '琼', '青', '沪', '宁', '桂', '津', '蒙'];
+    var newdata = [57, 44, 36, 34, 32, 26, 26, 26, 23, 22, 21, 19, 18, 13, 10, 10, 10, 9, 8, 7, 7, 7, 6, 4, 4, 3, 3, 3, 2, 1, 0];
+  }else if(num == 0){
+    var newaxis = ['晋', '豫', '冀', '浙', '川', '陕', '苏', '湘', '鲁', '赣', '闽', '皖', '鄂', '滇', '甘', '辽', '蒙', '京', '新', '粤', '吉', '桂', '黔', '藏', '黑', '渝', '青', '沪', '琼', '宁', '津'];
+    var newdata = [539, 430, 304, 300, 289, 283, 261, 234, 230, 190, 179, 178, 177, 170, 161, 154, 148, 140, 136, 133, 97, 84, 81, 71, 70, 62, 51, 42, 37, 36, 27];
+  }
+  myChart2.setOption({
+    xAxis: {
+      data: newaxis
+    },
+    series: [{
+      data: newdata
+    }]
+  });
 }
