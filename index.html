@@ -75,6 +75,23 @@
           <p class="chartIntro">这里写表格内容的介绍</p>
         </div>
       </div>
+
+      <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
+      <div class="charts" id="area4">
+        <div class="chartText">
+          <h2 class="chartTitle">标题示例</h2>
+          <p class="chartIntro">这里写表格内容的介绍</p>
+        </div>
+        <div id="chart4" class="chart"></div>
+      </div>
+      <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
+      <div class="charts" id="area5">
+        <div id="chart5" class="chart"></div>
+        <div class="chartText">
+          <h2 class="chartTitle">标题示例</h2>
+          <p class="chartIntro">这里写表格内容的介绍</p>
+        </div>
+      </div>
     </div>
 
     <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
@@ -85,7 +102,6 @@
         <div class="mdui-tab mdui-tab-full-width" mdui-tab>
           <a href="#example4-tab1" class="mdui-ripple" onclick="changeSrc(1)">行政区热力</a>
           <a href="#example4-tab2" class="mdui-ripple" onclick="changeSrc(2)">散点图</a>
-          <a href="#example4-tab3" class="mdui-ripple" onclick="changeSrc(3)">地图3</a>
         </div>
       </div>
       <!-- 嵌入可视化网页 -->
@@ -125,8 +141,6 @@
         website.src = "https://visual.amap.com/share/mapv/6c24d31bcd698b04b8339a232ae1be04";
       } else if (id == 2) {
         website.src = "https://visual.amap.com/share/mapv/627819a6bf4f4286e51e7af28dab6346";
-      } else if (id == 3) {
-        website.src = "https://www.baidu.com/";
       }
     }
     // 打开指定链接下载文件

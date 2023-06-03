@@ -17,7 +17,7 @@ window.addEventListener('scroll', function() {
   } else {
     header.style.background = 'rgba(255, 255, 255, 0.8)';
   }
-  var chartList = ['chart1','chart2','chart3'];
+  var chartList = ['chart1','chart2','chart3','chart4','chart5'];
   // 遍历chartList中的元素，判断是否在可视区域内
   for (var i = 0; i < chartList.length; i++) {
     var chart = document.getElementById(chartList[i]);
@@ -42,6 +42,16 @@ window.addEventListener('scroll', function() {
         document.getElementById('area3').getElementsByClassName('chartText')[0].classList.add('chartTextActive');
         vis[chartList[i]] = true;
       }
+      if (chartList[i] == 'chart4' && !vis[chartList[i]]) {
+        setTimeout(activiteChart4(), 2000);
+        document.getElementById('area4').getElementsByClassName('chartText')[0].classList.add('chartTextActive');
+        vis[chartList[i]] = true;
+      }
+      if (chartList[i] == 'chart5' && !vis[chartList[i]]) {
+        setTimeout(activiteChart5(), 2000);
+        document.getElementById('area5').getElementsByClassName('chartText')[0].classList.add('chartTextActive');
+        vis[chartList[i]] = true;
+      }
     }
   }
 });
@@ -55,7 +65,7 @@ window.addEventListener('scroll', function() {
   var chartsOffsetTop = chartsSection.offsetTop;
   link = navLinks[0];
   // 判断滚动位置是否在charts区域
-  if (scrollTop >= chartsOffsetTop && scrollTop < chartsOffsetTop + chartsSection.offsetHeight) {
+  if (scrollTop >= chartsOffsetTop-200 && scrollTop < chartsOffsetTop + chartsSection.offsetHeight) {
     // 在charts区域中，添加样式
     link.style.boxShadow = '0 0 10px rgba(49, 160, 160, 0.5)';
     link.style.borderBottom = '2px solid rgb(49, 160, 160)';
@@ -114,10 +124,10 @@ async function activiteChart1(){
     dataShadow.push(yMax);
   }
   option2 = {
-    title: {
-      text: '全国重点文物保护单位各省空间分布数量分析',
-      subtext: '数据来自中国八批重点文物保护单位名单，截至2023年5月共八批'
-    },
+    // title: {
+    //   text: '全国重点文物保护单位各省空间分布数量分析',
+    //   subtext: '数据来自中国八批重点文物保护单位名单，截至2023年5月共八批'
+    // },
     xAxis: {
       data: dataAxis,
       axisLabel: {
@@ -386,6 +396,2617 @@ async function activiteChart3(){
   };
   
   option3 && myChart3.setOption(option3);
+}
+
+async function activiteChart4(){
+  var chartDom4 = document.getElementById("chart4");
+  var myChart4 = echarts.init(chartDom4);
+  var option4;
+  
+  option4 = {
+    animationDuration: 2000,
+    animationDelay: 1000,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      }
+    },
+    legend: {
+      data: ['古遗址', '古建筑', '近现代重要史迹及代表性建筑', '革命遗址及革命纪念建筑物', '古墓葬', '合并项目', '石窟寺、石刻及其他']
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap: false,
+        axisLabel:{  interval: 0},
+        data: ['旧石器', '新石器', '夏', '商', '西周', '东周', '秦', '汉', '三国', '晋', '南北朝', '隋', '唐', '五代十国', '宋', '辽', '金', '元', '明', '清', '中华民国', '中国']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    series: [
+      {
+        name: '古遗址',
+        type: 'line',
+        smooth: true,
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [100, 362, 32, 39, 52, 121, 24, 112, 7, 9, 31, 15, 93, 7, 74, 26,	29, 25, 37, 14, 0, 0]
+      },
+      {
+        name: '古墓葬',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0, 6, 18, 6, 22, 54, 4, 108, 13, 8, 12, 6, 32, 10, 29, 15, 3, 18, 43, 26, 0, 1]
+      },
+      {
+        name: '古建筑',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0, 0, 0, 0, 0, 5, 5, 19, 0, 0, 7, 4, 91, 23, 279, 48, 94, 236, 748, 609, 6, 0]
+      },
+      {
+        name: '近现代重要史迹及代表性建筑',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 275, 543, 78]
+      },
+      {
+        name: '革命遗址及革命纪念建筑物',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 28, 45, 8]
+      },
+      {
+        name: '合并项目',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [1, 0, 0, 0, 1, 5, 0, 17, 0, 2, 6, 3, 15, 2, 10, 2, 2, 2, 16, 11, 46, 0]
+      },
+      {
+        name: '石窟寺、石刻及其他',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [1, 11, 0, 0, 1, 6, 0, 16, 3, 4, 74, 12, 86, 7, 66, 2, 7, 12, 28, 13, 1, 1]
+      }
+    ]
+  };
+  
+  option4 && myChart4.setOption(option4);
+}
+
+function getLevelOption() {
+  return [
+    {
+      itemStyle: {
+        borderWidth: 0,
+        gapWidth: 5,
+      },
+    },
+    {
+      itemStyle: {
+        gapWidth: 1,
+      },
+    },
+    {
+      colorSaturation: [0.15, 0.75],
+      itemStyle: {
+        gapWidth: 1,
+        borderColorSaturation: 0.6,
+      },
+    },
+  ];
+}
+
+async function activiteChart5(){
+  var chartDom5 = document.getElementById("chart5");
+  var myChart5 = echarts.init(chartDom5);
+  var option5;
+  
+  option5 = {
+    animationDuration: 1000,
+    animationDelay: 500,
+    tooltip: {
+      formatter: function (info) {
+        var value = info.value;
+        return ['<div class="tooltip-title">' +
+        info.name +
+        '</div>',,"\n总个数: " + value].join("");
+      },
+    },
+    series: [
+      {
+        type: "treemap",
+        visibleMin: 300,
+        label: {
+          show: true,
+          formatter: "{b}",
+        },
+        upperLabel: {
+          show: true,
+          height: 20,
+        },
+        itemStyle: {
+          borderColor: "#fff",
+        },
+        levels: getLevelOption(),
+        data: [
+          {
+            name: "山西",
+            value: 539,
+            children: [
+              {
+                name: "上古",
+                value: 18,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 21,
+              },
+              {
+                name: "春秋",
+                value: 2,
+              },
+              {
+                name: "战国",
+                value: 1,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 6,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 22,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 17,
+              },
+              {
+                name: "五代十国",
+                value: 4,
+              },
+              {
+                name: "宋",
+                value: 128,
+              },
+              {
+                name: "元",
+                value: 125,
+              },
+              {
+                name: "明",
+                value: 122,
+              },
+              {
+                name: "清",
+                value: 44,
+              },
+              {
+                name: "民国",
+                value: 26,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "河南",
+            value: 430,
+            children: [
+              {
+                name: "上古",
+                value: 73,
+              },
+              {
+                name: "夏",
+                value: 7,
+              },
+              {
+                name: "商",
+                value: 11,
+              },
+              {
+                name: "周",
+                value: 28,
+              },
+              {
+                name: "春秋",
+                value: 5,
+              },
+              {
+                name: "战国",
+                value: 9,
+              },
+              {
+                name: "秦",
+                value: 3,
+              },
+              {
+                name: "汉",
+                value: 33,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 22,
+              },
+              {
+                name: "隋",
+                value: 3,
+              },
+              {
+                name: "唐",
+                value: 23,
+              },
+              {
+                name: "五代十国",
+                value: 6,
+              },
+              {
+                name: "宋",
+                value: 62,
+              },
+              {
+                name: "元",
+                value: 19,
+              },
+              {
+                name: "明",
+                value: 54,
+              },
+              {
+                name: "清",
+                value: 42,
+              },
+              {
+                name: "民国",
+                value: 22,
+              },
+              {
+                name: "新中国",
+                value: 8,
+              },
+            ],
+          },
+          {
+            name: "河北",
+            value: 304,
+            children: [
+              {
+                name: "上古",
+                value: 20,
+              },
+              {
+                name: "夏",
+                value: 3,
+              },
+              {
+                name: "商",
+                value: 4,
+              },
+              {
+                name: "周",
+                value: 6,
+              },
+              {
+                name: "春秋",
+                value: 2,
+              },
+              {
+                name: "战国",
+                value: 13,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 13,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 16,
+              },
+              {
+                name: "隋",
+                value: 4,
+              },
+              {
+                name: "唐",
+                value: 18,
+              },
+              {
+                name: "五代十国",
+                value: 4,
+              },
+              {
+                name: "宋",
+                value: 56,
+              },
+              {
+                name: "元",
+                value: 18,
+              },
+              {
+                name: "明",
+                value: 62,
+              },
+              {
+                name: "清",
+                value: 41,
+              },
+              {
+                name: "民国",
+                value: 20,
+              },
+              {
+                name: "新中国",
+                value: 3,
+              },
+            ],
+          },
+          {
+            name: "浙江",
+            value: 300,
+            children: [
+              {
+                name: "上古",
+                value: 23,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 3,
+              },
+              {
+                name: "春秋",
+                value: 7,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 6,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 5,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 16,
+              },
+              {
+                name: "五代十国",
+                value: 12,
+              },
+              {
+                name: "宋",
+                value: 47,
+              },
+              {
+                name: "元",
+                value: 17,
+              },
+              {
+                name: "明",
+                value: 61,
+              },
+              {
+                name: "清",
+                value: 73,
+              },
+              {
+                name: "民国",
+                value: 24,
+              },
+              {
+                name: "新中国",
+                value: 4,
+              },
+            ],
+          },
+          {
+            name: "四川",
+            value: 289,
+            children: [
+              {
+                name: "上古",
+                value: 8,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 3,
+              },
+              {
+                name: "周",
+                value: 2,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 4,
+              },
+              {
+                name: "秦",
+                value: 2,
+              },
+              {
+                name: "汉",
+                value: 23,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 4,
+              },
+              {
+                name: "隋",
+                value: 5,
+              },
+              {
+                name: "唐",
+                value: 34,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 33,
+              },
+              {
+                name: "元",
+                value: 14,
+              },
+              {
+                name: "明",
+                value: 53,
+              },
+              {
+                name: "清",
+                value: 72,
+              },
+              {
+                name: "民国",
+                value: 25,
+              },
+              {
+                name: "新中国",
+                value: 5,
+              },
+            ],
+          },
+          {
+            name: "陕西",
+            value: 282,
+            children: [
+              {
+                name: "上古",
+                value: 32,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 4,
+              },
+              {
+                name: "周",
+                value: 9,
+              },
+              {
+                name: "春秋",
+                value: 2,
+              },
+              {
+                name: "战国",
+                value: 9,
+              },
+              {
+                name: "秦",
+                value: 13,
+              },
+              {
+                name: "汉",
+                value: 27,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 7,
+              },
+              {
+                name: "隋",
+                value: 8,
+              },
+              {
+                name: "唐",
+                value: 43,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 29,
+              },
+              {
+                name: "元",
+                value: 12,
+              },
+              {
+                name: "明",
+                value: 38,
+              },
+              {
+                name: "清",
+                value: 14,
+              },
+              {
+                name: "民国",
+                value: 33,
+              },
+              {
+                name: "新中国",
+                value: 0,
+              },
+            ],
+          },
+          {
+            name: "湖南",
+            value: 234,
+            children: [
+              {
+                name: "上古",
+                value: 21,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 6,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 8,
+              },
+              {
+                name: "秦",
+                value: 2,
+              },
+              {
+                name: "汉",
+                value: 10,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 3,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 7,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 19,
+              },
+              {
+                name: "元",
+                value: 0,
+              },
+              {
+                name: "明",
+                value: 32,
+              },
+              {
+                name: "清",
+                value: 78,
+              },
+              {
+                name: "民国",
+                value: 40,
+              },
+              {
+                name: "新中国",
+                value: 3,
+              },
+            ],
+          },
+          {
+            name: "山东",
+            value: 230,
+            children: [
+              {
+                name: "上古",
+                value: 52,
+              },
+              {
+                name: "夏",
+                value: 1,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 22,
+              },
+              {
+                name: "春秋",
+                value: 4,
+              },
+              {
+                name: "战国",
+                value: 4,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 13,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 19,
+              },
+              {
+                name: "隋",
+                value: 3,
+              },
+              {
+                name: "唐",
+                value: 6,
+              },
+              {
+                name: "五代十国",
+                value: 1,
+              },
+              {
+                name: "宋",
+                value: 20,
+              },
+              {
+                name: "元",
+                value: 5,
+              },
+              {
+                name: "明",
+                value: 27,
+              },
+              {
+                name: "清",
+                value: 32,
+              },
+              {
+                name: "民国",
+                value: 16,
+              },
+              {
+                name: "新中国",
+                value: 2,
+              },
+            ],
+          },
+          {
+            name: "江西",
+            value: 190,
+            children: [
+              {
+                name: "上古",
+                value: 8,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 4,
+              },
+              {
+                name: "周",
+                value: 2,
+              },
+              {
+                name: "春秋",
+                value: 1,
+              },
+              {
+                name: "战国",
+                value: 1,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 4,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 12,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 25,
+              },
+              {
+                name: "元",
+                value: 4,
+              },
+              {
+                name: "明",
+                value: 28,
+              },
+              {
+                name: "清",
+                value: 30,
+              },
+              {
+                name: "民国",
+                value: 66,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "福建",
+            value: 179,
+            children: [
+              {
+                name: "上古",
+                value: 10,
+              },
+              {
+                name: "夏",
+                value: 1,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 1,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 1,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 6,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 41,
+              },
+              {
+                name: "元",
+                value: 5,
+              },
+              {
+                name: "明",
+                value: 36,
+              },
+              {
+                name: "清",
+                value: 53,
+              },
+              {
+                name: "民国",
+                value: 18,
+              },
+              {
+                name: "新中国",
+                value: 2,
+              },
+            ],
+          },
+          {
+            name: "安徽",
+            value: 178,
+            children: [
+              {
+                name: "上古",
+                value: 18,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 4,
+              },
+              {
+                name: "春秋",
+                value: 2,
+              },
+              {
+                name: "战国",
+                value: 2,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 4,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 4,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 9,
+              },
+              {
+                name: "五代十国",
+                value: 1,
+              },
+              {
+                name: "宋",
+                value: 17,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 51,
+              },
+              {
+                name: "清",
+                value: 43,
+              },
+              {
+                name: "民国",
+                value: 14,
+              },
+              {
+                name: "新中国",
+                value: 5,
+              },
+            ],
+          },
+          {
+            name: "湖北",
+            value: 176,
+            children: [
+              {
+                name: "上古",
+                value: 24,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 23,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 6,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 0,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 6,
+              },
+              {
+                name: "五代十国",
+                value: 1,
+              },
+              {
+                name: "宋",
+                value: 8,
+              },
+              {
+                name: "元",
+                value: 6,
+              },
+              {
+                name: "明",
+                value: 26,
+              },
+              {
+                name: "清",
+                value: 32,
+              },
+              {
+                name: "民国",
+                value: 34,
+              },
+              {
+                name: "新中国",
+                value: 6,
+              },
+            ],
+          },
+          {
+            name: "云南",
+            value: 169,
+            children: [
+              {
+                name: "上古",
+                value: 13,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 2,
+              },
+              {
+                name: "春秋",
+                value: 3,
+              },
+              {
+                name: "战国",
+                value: 3,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 6,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 15,
+              },
+              {
+                name: "五代十国",
+                value: 1,
+              },
+              {
+                name: "宋",
+                value: 2,
+              },
+              {
+                name: "元",
+                value: 9,
+              },
+              {
+                name: "明",
+                value: 34,
+              },
+              {
+                name: "清",
+                value: 49,
+              },
+              {
+                name: "民国",
+                value: 24,
+              },
+              {
+                name: "新中国",
+                value: 5,
+              },
+            ],
+          },
+          {
+            name: "甘肃",
+            value: 161,
+            children: [
+              {
+                name: "上古",
+                value: 24,
+              },
+              {
+                name: "夏",
+                value: 3,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 4,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 4,
+              },
+              {
+                name: "秦",
+                value: 2,
+              },
+              {
+                name: "汉",
+                value: 20,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 22,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 3,
+              },
+              {
+                name: "五代十国",
+                value: 2,
+              },
+              {
+                name: "宋",
+                value: 17,
+              },
+              {
+                name: "元",
+                value: 6,
+              },
+              {
+                name: "明",
+                value: 31,
+              },
+              {
+                name: "清",
+                value: 8,
+              },
+              {
+                name: "民国",
+                value: 13,
+              },
+              {
+                name: "新中国",
+                value: 0,
+              },
+            ],
+          },
+          {
+            name: "辽宁",
+            value: 154,
+            children: [
+              {
+                name: "上古",
+                value: 17,
+              },
+              {
+                name: "夏",
+                value: 4,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 1,
+              },
+              {
+                name: "春秋",
+                value: 1,
+              },
+              {
+                name: "战国",
+                value: 1,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 26,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 8,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 3,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 30,
+              },
+              {
+                name: "元",
+                value: 0,
+              },
+              {
+                name: "明",
+                value: 11,
+              },
+              {
+                name: "清",
+                value: 26,
+              },
+              {
+                name: "民国",
+                value: 18,
+              },
+              {
+                name: "新中国",
+                value: 6,
+              },
+            ],
+          },
+          {
+            name: "内蒙古",
+            value: 148,
+            children: [
+              {
+                name: "上古",
+                value: 32,
+              },
+              {
+                name: "夏",
+                value: 4,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 2,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 2,
+              },
+              {
+                name: "秦",
+                value: 1,
+              },
+              {
+                name: "汉",
+                value: 11,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 2,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 32,
+              },
+              {
+                name: "元",
+                value: 12,
+              },
+              {
+                name: "明",
+                value: 5,
+              },
+              {
+                name: "清",
+                value: 29,
+              },
+              {
+                name: "民国",
+                value: 11,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "北京",
+            value: 133,
+            children: [
+              {
+                name: "上古",
+                value: 2,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 1,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 0,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 3,
+              },
+              {
+                name: "唐",
+                value: 0,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 7,
+              },
+              {
+                name: "元",
+                value: 8,
+              },
+              {
+                name: "明",
+                value: 39,
+              },
+              {
+                name: "清",
+                value: 50,
+              },
+              {
+                name: "民国",
+                value: 14,
+              },
+              {
+                name: "新中国",
+                value: 9,
+              },
+            ],
+          },
+          {
+            name: "新疆",
+            value: 140,
+            children: [
+              {
+                name: "上古",
+                value: 16,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 2,
+              },
+              {
+                name: "春秋",
+                value: 3,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 22,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 14,
+              },
+              {
+                name: "隋",
+                value: 2,
+              },
+              {
+                name: "唐",
+                value: 34,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 0,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 6,
+              },
+              {
+                name: "清",
+                value: 24,
+              },
+              {
+                name: "民国",
+                value: 8,
+              },
+              {
+                name: "新中国",
+                value: 6,
+              },
+            ],
+          },
+          {
+            name: "广东",
+            value: 133,
+            children: [
+              {
+                name: "上古",
+                value: 8,
+              },
+              {
+                name: "夏",
+                value: 1,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 2,
+              },
+              {
+                name: "汉",
+                value: 2,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 9,
+              },
+              {
+                name: "五代十国",
+                value: 3,
+              },
+              {
+                name: "宋",
+                value: 11,
+              },
+              {
+                name: "元",
+                value: 1,
+              },
+              {
+                name: "明",
+                value: 22,
+              },
+              {
+                name: "清",
+                value: 45,
+              },
+              {
+                name: "民国",
+                value: 27,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "吉林",
+            value: 97,
+            children: [
+              {
+                name: "上古",
+                value: 11,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 5,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 5,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 13,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 11,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 17,
+              },
+              {
+                name: "元",
+                value: 0,
+              },
+              {
+                name: "明",
+                value: 4,
+              },
+              {
+                name: "清",
+                value: 9,
+              },
+              {
+                name: "民国",
+                value: 18,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "广西",
+            value: 84,
+            children: [
+              {
+                name: "上古",
+                value: 13,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 2,
+              },
+              {
+                name: "秦",
+                value: 2,
+              },
+              {
+                name: "汉",
+                value: 4,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 1,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 2,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 6,
+              },
+              {
+                name: "元",
+                value: 0,
+              },
+              {
+                name: "明",
+                value: 14,
+              },
+              {
+                name: "清",
+                value: 16,
+              },
+              {
+                name: "民国",
+                value: 23,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "贵州",
+            value: 81,
+            children: [
+              {
+                name: "上古",
+                value: 4,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 2,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 4,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 2,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 2,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 28,
+              },
+              {
+                name: "清",
+                value: 21,
+              },
+              {
+                name: "民国",
+                value: 13,
+              },
+              {
+                name: "新中国",
+                value: 3,
+              },
+            ],
+          },
+          {
+            name: "西藏",
+            value: 67,
+            children: [
+              {
+                name: "上古",
+                value: 4,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 1,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 13,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 9,
+              },
+              {
+                name: "元",
+                value: 6,
+              },
+              {
+                name: "明",
+                value: 16,
+              },
+              {
+                name: "清",
+                value: 12,
+              },
+              {
+                name: "民国",
+                value: 1,
+              },
+              {
+                name: "新中国",
+                value: 5,
+              },
+            ],
+          },
+          {
+            name: "黑龙江",
+            value: 70,
+            children: [
+              {
+                name: "上古",
+                value: 8,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 1,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 4,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 3,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 6,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 14,
+              },
+              {
+                name: "元",
+                value: 1,
+              },
+              {
+                name: "明",
+                value: 2,
+              },
+              {
+                name: "清",
+                value: 12,
+              },
+              {
+                name: "民国",
+                value: 16,
+              },
+              {
+                name: "新中国",
+                value: 2,
+              },
+            ],
+          },
+          {
+            name: "重庆",
+            value: 62,
+            children: [
+              {
+                name: "上古",
+                value: 2,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 1,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 2,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 1,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 9,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 4,
+              },
+              {
+                name: "清",
+                value: 9,
+              },
+              {
+                name: "民国",
+                value: 30,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+          {
+            name: "江苏",
+            value: 261,
+            children: [
+              {
+                name: "上古",
+                value: 25,
+              },
+              {
+                name: "夏",
+                value: 1,
+              },
+              {
+                name: "商",
+                value: 2,
+              },
+              {
+                name: "周",
+                value: 6,
+              },
+              {
+                name: "春秋",
+                value: 2,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 12,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 14,
+              },
+              {
+                name: "隋",
+                value: 1,
+              },
+              {
+                name: "唐",
+                value: 7,
+              },
+              {
+                name: "五代十国",
+                value: 3,
+              },
+              {
+                name: "宋",
+                value: 21,
+              },
+              {
+                name: "元",
+                value: 10,
+              },
+              {
+                name: "明",
+                value: 46,
+              },
+              {
+                name: "清",
+                value: 62,
+              },
+              {
+                name: "民国",
+                value: 47,
+              },
+              {
+                name: "新中国",
+                value: 2,
+              },
+            ],
+          },
+          {
+            name: "青海",
+            value: 51,
+            children: [
+              {
+                name: "上古",
+                value: 6,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 1,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 2,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 5,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 3,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 11,
+              },
+              {
+                name: "清",
+                value: 13,
+              },
+              {
+                name: "民国",
+                value: 3,
+              },
+              {
+                name: "新中国",
+                value: 3,
+              },
+            ],
+          },
+          {
+            name: "上海",
+            value: 41,
+            children: [
+              {
+                name: "上古",
+                value: 4,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 0,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 2,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 2,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 3,
+              },
+              {
+                name: "清",
+                value: 11,
+              },
+              {
+                name: "民国",
+                value: 14,
+              },
+              {
+                name: "新中国",
+                value: 3,
+              },
+            ],
+          },
+          {
+            name: "海南",
+            value: 37,
+            children: [
+              {
+                name: "上古",
+                value: 3,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 1,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 4,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 7,
+              },
+              {
+                name: "元",
+                value: 1,
+              },
+              {
+                name: "明",
+                value: 6,
+              },
+              {
+                name: "清",
+                value: 7,
+              },
+              {
+                name: "民国",
+                value: 8,
+              },
+              {
+                name: "新中国",
+                value: 0,
+              },
+            ],
+          },
+          {
+            name: "宁夏",
+            value: 35,
+            children: [
+              {
+                name: "上古",
+                value: 5,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 1,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 3,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 2,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 1,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 9,
+              },
+              {
+                name: "元",
+                value: 2,
+              },
+              {
+                name: "明",
+                value: 2,
+              },
+              {
+                name: "清",
+                value: 9,
+              },
+              {
+                name: "民国",
+                value: 1,
+              },
+              {
+                name: "新中国",
+                value: 0,
+              },
+            ],
+          },
+          {
+            name: "天津",
+            value: 27,
+            children: [
+              {
+                name: "上古",
+                value: 0,
+              },
+              {
+                name: "夏",
+                value: 0,
+              },
+              {
+                name: "商",
+                value: 0,
+              },
+              {
+                name: "周",
+                value: 0,
+              },
+              {
+                name: "春秋",
+                value: 0,
+              },
+              {
+                name: "战国",
+                value: 0,
+              },
+              {
+                name: "秦",
+                value: 0,
+              },
+              {
+                name: "汉",
+                value: 0,
+              },
+              {
+                name: "三国两晋南北朝",
+                value: 0,
+              },
+              {
+                name: "隋",
+                value: 0,
+              },
+              {
+                name: "唐",
+                value: 0,
+              },
+              {
+                name: "五代十国",
+                value: 0,
+              },
+              {
+                name: "宋",
+                value: 2,
+              },
+              {
+                name: "元",
+                value: 1,
+              },
+              {
+                name: "明",
+                value: 1,
+              },
+              {
+                name: "清",
+                value: 12,
+              },
+              {
+                name: "民国",
+                value: 10,
+              },
+              {
+                name: "新中国",
+                value: 1,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  
+  
+  option5 && myChart5.setOption(option5);
 }
 
 function resetYData(num) {
