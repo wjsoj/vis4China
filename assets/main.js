@@ -418,11 +418,6 @@ async function activiteChart4(){
     legend: {
       data: ['古遗址', '古建筑', '近现代重要史迹及代表性建筑', '革命遗址及革命纪念建筑物', '古墓葬', '合并项目', '石窟寺、石刻及其他']
     },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
     grid: {
       left: '3%',
       right: '4%',

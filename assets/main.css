@@ -161,19 +161,33 @@ nav a:hover {
     min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 
 .chart {
     padding: 20px;
     margin-top: 20px;
-    background-color: rgba(255,255,255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.chartTextRight {
+    /* margin: 60 80px; */
+    margin-top: 100px;
+    margin-right: 80px;
 }
 
 .chartText {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* 添加立体展示框效果 */
+    /* box-shadow: 0 0 10px rgba(49, 160, 160, 0.5); */
+    /* border-radius: 10px; */
+}
+
+.chartTextLeft {
     /* margin: 60 80px; */
-    margin-top: 120px;
+    margin-top: 100px;
+    margin-left: 80px;
 }
 
 /* 动画进入 */
@@ -182,18 +196,20 @@ nav a:hover {
 }
 
 .chartTitle {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: rgb(49, 160, 160);
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 .chartIntro {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: rgb(150, 150, 150);
+    font-size: 1.1rem;
+    /* font-weight: 600; */
+    color: black;
     margin: 20px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 #area1 {
@@ -292,6 +308,17 @@ footer a {
 
 .btn:hover {
     background-color: rgb(49, 160, 160, 0.8);
+}
+
+.diag-btn {
+    background-color: rgb(142, 249, 206);
+    margin-top: 30px;
+}
+
+.learn-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .select {

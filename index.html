@@ -10,7 +10,7 @@
     <script src="assets/echarts.js"></script>
     <!-- <script type="module" src="https://unpkg.com/x-frame-bypass"></script> -->
   </head>
-  <body>
+  <body class="mdui-theme-primary-indigo mdui-theme-accent-teal">
     <header>
       <nav>
         <div>
@@ -20,6 +20,9 @@
           <a href="#area1">图表</a>
           <a href="#map">地图</a>
           <a href="#about">关于</a>
+          <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="changeRibbon()">
+            <i class="mdui-icon material-icons">clear_all</i>
+          </button>
         </div>
       </nav>
     </header>
@@ -41,8 +44,8 @@
     <div class="chartt">
       <div class="charts" id="area1">
         <div id="chart1" class="chart"></div>
-        <div class="chartText">
-          <h2 class="chartTitle">标题示例</h2>
+        <div class="chartText chartTextRight">
+          <h2 class="chartTitle">全国重点文物保护单位各省空间分布数量分析</h2>
           <div class="select">
             <select name="类别" id="selector">
               <option value="0" selected>总览</option>
@@ -53,16 +56,50 @@
               <option value="5">石窟寺、石刻及其他</option>
             </select>
           </div>
-          <p class="chartIntro">这里写表格内容的介绍</p>
+          <p class="chartIntro">可通过总览和分类功能，选择整体或者不同类型的文物，进行对应类型的空间分布分析。单击某柱或鼠标滚轮往上方向可以进行放大，左右可拖动查看，鼠标滚轮往下方向可以进行缩小。</p>
+          <div class="learn-more">
+            <button class="mdui-btn mdui-ripple diag-btn" mdui-dialog="{target: '#diag1'}">了解更多 →</button>
+        
+            <div class="mdui-dialog" id="diag1">
+              <div class="mdui-dialog-title">全国重点文物保护单位各省空间分布数量分析</div>
+              <div class="mdui-dialog-content .mdui-typo">
+                <p>本图展现了全国各个省的全国重点文物保护单位的数目，分析发现总数上山西（晋）的数量最多，高达537处，其原因可能是位于黄河流域，历史较悠久，“地上文物看山西”，且明清时期“晋商”的兴起使得此地较为富裕，具备拥有较多文物保护单位的初始条件；其次，山西省的文物保护单位大多分布于较偏僻地区，同时气候干燥少雨，对多为土木结构的古建筑的保存具有天然优势，这些因素使得文保单位得以较完整地留存下来，这一点尤其是在选择“古建筑”时有清晰体现，即山西省的该类别数量远超于其他省份。</p>
+
+                <br>
+
+                <p>总数紧随其后的还有河南（豫），以及浙、冀、川、陕、苏、湘、鲁等地区，很多地区有深厚的历史底蕴，得天独厚的地理优势，孕育了独特的文化。不少地区在各类型上各领风骚。例如陕西省在“古墓葬”方面也拔得头筹，与秦及兵马俑的原因密不可分；河南省在“古遗址”中遥遥领先，与其地处母亲河黄河中下游、很多文明发源于此、半数古都定位于此有强烈关联，如著名的“仰韶遗址”等；江苏省由于近代以来南京国民政府的地理位置等原因，近现代建筑和纪念性建筑最多；四川省在“石窟寺、石刻”方面位列第一，就单独用前者来探讨，受地理上四川盆地的地形，石质松软细腻，易于开凿雕像，经济上该地多富庶殷实，历史上唐朝川渝地区高僧聚集、佛寺众多等多种综合因素影响。</p>
+
+                <img src="https://s2.loli.net/2023/06/04/vOcIW65PFAVRqZx.png" >
+              </div>
+              <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>close</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- 加一行分割线，要好看 -->
       <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
 
       <div class="charts" id="area2">
-        <div class="chartText">
-          <h2 class="chartTitle">标题示例</h2>
-          <p class="chartIntro">这里写表格内容的介绍</p>
+        <div class="chartText chartTextLeft">
+          <h2 class="chartTitle">全国重点文物保护单位各类型的各批次数量趋势分析</h2>
+          <p class="chartIntro">光标移至每个时间点，上方饼图显示该公布时间（即批次）的不同类型所占的数量和比例，此时若放至上方饼图，可查看单个部分的数据。光标移至每条具体的曲线可以查看选定类型在各批次的数量的变化趋势。光标轻放上方图例可以进行更显著的单类别数量趋势查看，点击上方图例可以显示/隐藏此种类型的饼图和曲线。图中横轴的时间均为该批次的公布时间。</p>
+          <div class="learn-more">
+            <button class="mdui-btn mdui-ripple diag-btn" mdui-dialog="{target: '#diag2'}">了解更多 →</button>
+        
+            <div class="mdui-dialog" id="diag2">
+              <div class="mdui-dialog-title">全国重点文物保护单位各类型的各批次数量趋势分析</div>
+              <div class="mdui-dialog-content .mdui-typo">
+                <p>本图可反映出各类型数量的多少，尤其比下图在比例分析和变化趋势上更明显。
+                  读图发现不同批次的类别比例相对稳定，古建筑一直是占比最大的部分；变化趋势上也较为相似，从第二批开始均呈上升态势，到第八批稍有回落，各类别也稍有不同，如“代表性、纪念性建筑物”和“古建筑”的在5至7批上升快，古遗址在4至6批上升快，从侧面体现出受当时某些新考古发现的影响，对不同类型文物的理解和价值挖掘程度有所差异。
+                  </p>
+              </div>
+              <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>close</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="chart2" class="chart"></div>
       </div>
@@ -70,26 +107,75 @@
 
       <div class="charts" id="area3">
         <div id="chart3" class="chart"></div>
-        <div class="chartText">
-          <h2 class="chartTitle">标题示例</h2>
-          <p class="chartIntro">这里写表格内容的介绍</p>
+        <div class="chartText chartTextRight">
+          <h2 class="chartTitle">全国重点文物保护单位各批次中各类型数量分析</h2>
+          <p class="chartIntro">将光标放到横行空白处可弹出框横向查看各批次总数和每个类型数量；将光标放到特定颜色上可以纵向查看该类型在不同批次中的数量。点击上方图例可以显示/隐藏此种类型的数量，因此可留下某一类型查看单独的类型的数量变化情况。</p>
+          <div class="learn-more">
+            <button class="mdui-btn mdui-ripple diag-btn" mdui-dialog="{target: '#diag3'}">了解更多 →</button>
+        
+            <div class="mdui-dialog" id="diag3">
+              <div class="mdui-dialog-title">全国重点文物保护单位各批次中各类型数量分析</div>
+              <div class="mdui-dialog-content .mdui-typo">
+                <p>该图尤其可显示各批次的总数及直观显示各个类型的数量，作为上图一个有力的补充。在总数比较上，图中显示第七批入选的数量最多，第二批数量最少。据中国文化遗产研究院高级工程师张之平说：“在2009年以来展开的第七批全国重点文物保护单位的申报评审工作过程中，全国各地踊跃申报，比前六批国保单位总数还上翻了一倍多”。
+                <br/>
+                <br/>
+                除了新的考古发现的客观因素，比如20世纪八九十年代对三星堆遗址的大规模发掘和研究，这也从一个侧面反映了新世纪以来社会各界对文物的保护意识增强，文化自信也在提升。同时，有关部门也进行严格审查，保证文物保护单位不仅数量多，更要质量高。我们也应看到，仅仅成为国保单位并不是终点，持久地维护和检查才是使文物保护焕发活力的更重要环节。</p>
+              </div>
+              <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>close</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
       <div class="charts" id="area4">
-        <div class="chartText">
-          <h2 class="chartTitle">标题示例</h2>
-          <p class="chartIntro">这里写表格内容的介绍</p>
+        <div class="chartText chartTextLeft">
+          <h2 class="chartTitle">全国重点文物保护单位各类型所属时代数量分析</h2>
+          <p class="chartIntro">按照考古学、历史朝代分期法，受数据获取的因素影响，所有时间段均取起始时间，表明从这个时刻开始，并将朝代分为旧石器时代、新石器时代、夏、商、西周、东周、秦、汉、三国、晋、南北朝、隋、唐、五代十国、宋、辽、金、元、明、清、中华民国和中华人民共和国。<br/><br/> 将光标纵轴放到各朝代处，可以查看该朝代含有不同类别的数量，由于各类别之间无重叠，移动光标横轴置于多种类型的最上面可以查看横轴下方所包含的各类型的总数，置于最上方可以查看和比较不同朝代的国保单位总数。将光标放到特定颜色上可以查看该类型在不同朝代中的数量。点击上方图例可以显示/隐藏此种类型的数量，因此可留下某一类型查看单独的类型在不同朝代中的数量变化情况。</p>
+          <div class="learn-more">
+            <button class="mdui-btn mdui-ripple diag-btn" mdui-dialog="{target: '#diag4'}">了解更多 →</button>
+        
+            <div class="mdui-dialog" id="diag4">
+              <div class="mdui-dialog-title">全国重点文物保护单位各类型所属时代数量分析</div>
+              <div class="mdui-dialog-content .mdui-typo">
+                <p>各时代留存文物的多少与其距今年代远近、延续时间长短、人类活动频繁程度等有密切关系。在总数上，明、清两代国保单位的数量较多，居于前两位；尤其是两者的“古建筑”数量最多，与其历时长和距今较近有密切关系。民国时期凭借数量极多的“近现代重要史迹及代表性建筑”和“革命遗址及革命纪念建筑物”排名第三。此外，汉、唐、宋（北宋）是大一统时期，社会繁荣、国力强盛、延续时间长，尤其宋代文化教育、科学技术高度繁荣，因而留下众多价值重大的文化遗产，若考虑宋、辽、金政权并立，那这个时代的总体文物数量也是极为丰富。夏、秦、三国、晋、五代十国等朝代或因年代久远，或因历时较短，或因战乱频繁，留存的文物较少。</p>
+                <br/>
+                <p>就单独类别来看，新石器时代的“古遗址”遥遥领先，汉朝的“古墓葬”位列榜首，唐朝、南北朝、宋代的“石窟寺、石刻及其他”不相上下，总之，特定的地理人文原因造就了独特的历史气息。</p>
+              </div>
+              <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>close</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="chart4" class="chart"></div>
       </div>
       <hr style="width: 80%; margin: 0 auto; margin-top: 50px; margin-bottom: 50px; border: 1px solid #ccc;">
+
       <div class="charts" id="area5">
         <div id="chart5" class="chart"></div>
-        <div class="chartText">
-          <h2 class="chartTitle">标题示例</h2>
-          <p class="chartIntro">这里写表格内容的介绍</p>
+        <div class="chartText chartTextRight">
+          <h2 class="chartTitle">全国重点文物保护单位时空分布分析</h2>
+          <p class="chartIntro">为了方便分析，将时代分类进一步精简，最终以矩形树图的形式呈现出31个省级行政区所属文物保护单位的时空分布特征。<br/><br/>树图在行政区之间做了分隔，且能够显示父级元素的名称。鼠标悬停至节点上方可以查看对应行政区对应朝代的具体文保单位数目，支持缩放拖动和点击交互，下方可显示当前图像中心节点的路径</p>
+          <div class="learn-more">
+            <button class="mdui-btn mdui-ripple diag-btn" mdui-dialog="{target: '#diag5'}">了解更多 →</button>
+        
+            <div class="mdui-dialog" id="diag5">
+              <div class="mdui-dialog-title">全国重点文物保护单位时空分布分析</div>
+              <div class="mdui-dialog-content .mdui-typo">
+                <p>考察全国重点文物保护单位的时空分布，可以看出各行政区在历史上的兴衰演进和在不同历史时期的地位变化。较为典型的有：北京作为明清两朝的行政中心，保存明清两朝的文物最多；而陕西长安作为过去汉唐时期的行政中心，文物保护单位最多的所属朝代是唐朝；重庆作为抗战时期相当长时间段内的临时首都，保留了数量非常多的民国时期文物；类似的还有在明清两朝经济飞速发展、曾作为民国首都的南京，前三位分别是清朝、民国、明朝；而作为中原文明发源地和曾作为北宋首都汴京的河南，排名前两位的是上古（夏朝以前）和宋朝；新疆由于古丝绸之路的原因，拥有数量较多的唐朝文物；山东在前面的分析中指出保留了大量的古建筑，所以拥有较多的明清以前的文物……
+                </p>
+                <br/>
+                <p>虽然由于缺乏部分文物国保单位详细的时代数据且时代划分存在误差，但对于样本量较大的几个行政区，仍然能够得到有效的结论。通过时间、空间的结合，我们能够一窥中国历史上各行政区发展的差异和变化，与历史上的诸多大事件相映照。</p>
+                </p>
+              </div>
+              <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>close</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -131,8 +217,8 @@
     </div>
   </footer>
 
+  <script src="assets/Ribbon.js" id="Ribbon"></script>
   <script src="assets/main.js"></script>
-  <script src="assets/Ribbon.js"></script>
   <script>
     // 把#website的src改成指定的网址
     function changeSrc(id) {
@@ -153,6 +239,15 @@
         window.open("https://raw.githubusercontent.com/ChenYCL/Visualize-China/main/assets/data/report.pdf");
       } else if (id == 4) {
         window.open("https://wjsoj-vis4china-pythonmain-dbz309.streamlit.app/");
+      }
+    }
+    function changeRibbon() {
+      // 如果实例Ribbon存在，就删除
+      if(Ribbon == null ) {
+        Ribbon = new Ribbons();
+      }
+      else {
+        location.reload();
       }
     }
   </script>

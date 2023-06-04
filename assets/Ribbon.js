@@ -283,4 +283,4 @@
     };
     return Factory;
 });
-new Ribbons();
+var Ribbon = null;
