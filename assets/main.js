@@ -212,6 +212,11 @@ async function activiteChart2(){
         trigger: 'axis',
         showContent: false
       },
+      toolbox: {
+        feature: {
+          dataView: {}
+        }
+      },
       animationDuration: 2000,
       animationDelay: 1000,
       dataset: {
@@ -315,6 +320,11 @@ async function activiteChart3(){
       axisPointer: {
         // Use axis to trigger tooltip
         type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+      }
+    },
+    toolbox: {
+      feature: {
+        dataView: {}
       }
     },
     legend: {},
@@ -423,6 +433,11 @@ async function activiteChart4(){
       right: '4%',
       bottom: '3%',
       containLabel: true
+    },
+    toolbox: {
+      feature: {
+        dataView: {}
+      }
     },
     xAxis: [
       {
